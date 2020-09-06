@@ -1,5 +1,7 @@
 package pl.aptewicz.sda.projectone;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
+import pl.aptewicz.sda.projectone.service.formatter.JsonResponseFormatterSpeed;
 import pl.aptewicz.sda.projectone.service.http.OpenNotifyConnector;
 import pl.aptewicz.sda.projectone.service.formatter.JsonResponseFormatter;
 
@@ -17,5 +19,12 @@ public class Main {
         //        final var openNotifyConnector = new OpenNotifyConnector(HttpResponse::body, httpClient);
         final var openNotifyConnector = new OpenNotifyConnector(new JsonResponseFormatter(), httpClient);
         System.out.println(openNotifyConnector.getPeopleInSpace());
+
+        System.out.println("*****************");
+
+        final OpenNotifyConnector openNotifyConnectorSpeed= new OpenNotifyConnector(new JsonResponseFormatterSpeed(),httpClient);
+        System.out.println(openNotifyConnectorSpeed.getIsisSpeed());
     }
+
+
 }
